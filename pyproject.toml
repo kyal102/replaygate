@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "replaygate"
+version = "0.1.0"
+description = "Re-run evidence packs and detect verification drift (safe, no-shell replay)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["reproducibility", "replay", "drift", "verification", "audit", "ai-safety"]
+dependencies = []
+
+[project.scripts]
+replaygate = "replaygate.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["replaygate*"]

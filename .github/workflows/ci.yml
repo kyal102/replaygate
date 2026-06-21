@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Tests
+        run: python -m unittest discover -s tests
+      - name: Demo runs
+        run: python -m replaygate --demo
+      - name: Hygiene — no private imports / secrets / unsafe subprocess
+        run: |
+          ! grep -rnE "import (app|core|modules)\b|dtl_registry|jarvi3" replaygate/ || (echo "private import" && exit 1)
+          ! grep -rniE "api[_-]?key|secret|password|ANTHROPIC" replaygate/ || (echo "secret" && exit 1)
+          ! grep -rn "shell=True" replaygate/ || (echo "unsafe subprocess" && exit 1)
+          echo "hygiene ok"
