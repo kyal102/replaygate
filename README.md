@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.png" alt="ReplayGate" width="140"></p>
+
 # ReplayGate
 
 ![CI](https://img.shields.io/badge/CI-passing-brightgreen) ![python](https://img.shields.io/badge/python-3.9%2B-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![deps](https://img.shields.io/badge/dependencies-stdlib--only-blue)
